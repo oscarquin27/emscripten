@@ -61,12 +61,12 @@ def get_native_optimizer():
     sys.exit(1)
 
   # Allow users to override the location of the optimizer executable by setting an environment variable EMSCRIPTEN_NATIVE_OPTIMIZER=/path/to/optimizer(.exe)
-  opt = os.environ.get('EMSCRIPTEN_NATIVE_OPTIMIZER')
+  opt = os.environ.get('EMSCRIPTEN_NATIVE_OPTIMIZER', '')
   if len(opt):
     logging.debug('env forcing native optimizer at ' + opt))
     return opt
   # Also, allow specifying the location of the optimizer in .emscripten configuration file under EMSCRIPTEN_NATIVE_OPTIMIZER='/path/to/optimizer'
-  opt = getattr(shared, 'EMSCRIPTEN_NATIVE_OPTIMIZER')
+  opt = getattr(shared, 'EMSCRIPTEN_NATIVE_OPTIMIZER', '')
   if len(opt):
     logging.debug('config forcing native optimizer at ' + opt)
     return opt

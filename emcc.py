@@ -1751,7 +1751,7 @@ There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR P
 
     with ToolchainProfiler.profile_block('source transforms'):
       # Embed and preload files
-      if len(options.preload_files) + len(options.embed_files):
+      if len(options.preload_files) or len(options.embed_files):
 
         # copying into the heap is risky when split - the chunks might be too small for the file package!
         if shared.Settings.SPLIT_MEMORY and not options.no_heap_copy:
